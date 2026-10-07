@@ -13,6 +13,7 @@ jobs:
         uses: sarisia/actions-status-discord@v1
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          content: "<@&1557237761222770719>"
           status: "Success"
           title: "🚀 New Release: ${{ github.event.release.name || 'Manual Test' }}"
           description: "${{ github.event.release.body || 'This is a manual test run.' }}"
