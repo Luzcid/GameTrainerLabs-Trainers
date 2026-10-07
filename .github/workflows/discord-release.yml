@@ -3,6 +3,7 @@ name: Discord Release Notification
 on:
   release:
     types: [published]
+  workflow_dispatch: # This adds a manual "Run workflow" button
 
 jobs:
   notify:
@@ -13,7 +14,7 @@ jobs:
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
           status: "Success"
-          title: "🚀 New Release: ${{ github.event.release.name }}"
-          description: "${{ github.event.release.body }}"
-          url: "${{ github.event.release.html_url }}"
+          title: "🚀 New Release: ${{ github.event.release.name || 'Manual Test' }}"
+          description: "${{ github.event.release.body || 'This is a manual test run.' }}"
+          url: "${{ github.event.release.html_url || 'https://github.com/Luzcid/GameTrainerLabs-Trainers' }}"
           color: 0x00FF00
